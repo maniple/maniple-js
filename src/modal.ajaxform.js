@@ -1,4 +1,4 @@
-define(['jquery', './maniple.core', './maniple.modal'], function ($, Maniple, Modal) {
+define(['jquery', './core', './modal'], function ($, Maniple, Modal) {
 
     function btnSubmit(options) {
         return {
