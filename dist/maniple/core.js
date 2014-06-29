@@ -1,0 +1,1 @@
+define(["jquery"],function(a){return{ajax:App.ajax||a.ajax}});
