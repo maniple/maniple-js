@@ -12,6 +12,7 @@ module.exports = function(grunt) {
                     'dist/maniple/core.js' : 'src/core.js',
                     'dist/maniple/modal.js' : 'src/modal.js',
                     'dist/maniple/modal.ajaxform.js' : 'src/modal.ajaxform.js',
+                    "dist/maniple/viewtils.js" : 'src/viewtils.js',
                 },
             }
         },
