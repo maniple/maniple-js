@@ -1,5 +1,15 @@
 module.exports = function(grunt) {
 
+    var DISTDIR = 'dist/maniple';
+
+    var files = {};
+
+    grunt.file.recurse('src', function (abspath, rootdir, subdir, filename) {
+        if (filename.match(/\.js$/)) {
+            files[DISTDIR + (subdir ? '/' + subdir : '') + '/' + filename] = abspath;
+        }
+    });
+
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -8,12 +18,7 @@ module.exports = function(grunt) {
                 // banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             build: {
-                files: {
-                    'dist/maniple/core.js' : 'src/core.js',
-                    'dist/maniple/modal.js' : 'src/modal.js',
-                    'dist/maniple/modal.ajaxform.js' : 'src/modal.ajaxform.js',
-                    "dist/maniple/viewtils.js" : 'src/viewtils.js',
-                },
+                files: files,
             }
         },
 	jshint: {

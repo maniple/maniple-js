@@ -61,7 +61,7 @@ return function (options) { // {{{
     var successHandler = options.success,
         errorHandler = options.error,
         failHandler = options.fail,
-        token = options.token || App.token,
+        token = options.token,
         data = options.data || {};
 
     // add anti-CSRF token, do not overwrite token value already
