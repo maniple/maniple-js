@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-    var DISTDIR = 'dist/maniple';
+    var DISTDIR = 'dist';
 
     var files = {};
 
