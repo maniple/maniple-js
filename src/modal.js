@@ -155,9 +155,8 @@ define(['jquery'], function ($) {
 
         this._body    = this._createDiv('modal-body',    this._el);
 
-        this._footer  = this._createDiv('modal-footer',  this._el,     true);
+        this._footer  = this._createDiv('modal-footer',  this._el);
         this._buttons = this._createDiv('modal-buttons', this._footer, true);
-        this._status  = this._createDiv('modal-status',  this._footer, true);
 
         this._close.html(this._options.closeHtml);
 
@@ -322,24 +321,19 @@ define(['jquery'], function ($) {
     };
 
     Dialog.prototype.setStatus = function (message, type) {
+        this._body.find('.maniple-status-message').remove();
+
         message = $.trim(message);
-        this._status.html(message);
 
         if (message.length) {
-            this._status.show();
-            this._footer.show();
-        } else {
-            this._status.hide();
-            if (this._buttons.is(':hidden')) {
-                this._footer.hide();
-            }
+            this._body.prepend($('<div class="maniple-status-message" />').html(message));
         }
 
         return this;
     };
 
     Dialog.prototype.getStatus = function () {
-        return this._status.html();
+        return this._body.find('.maniple-status-message').html();
     };
 
     Dialog.prototype.setButtons = function (buttons) {
@@ -355,12 +349,8 @@ define(['jquery'], function ($) {
 
         if (this._buttons.is(':empty')) {
             this._buttons.hide();
-            if (this._status.is(':hidden')) {
-                this._footer.hide();
-            }
         } else {
             this._buttons.show();
-            this._footer.show();
         }
 
         return this;
@@ -399,7 +389,6 @@ define(['jquery'], function ($) {
         btn.appendTo(this._buttons);
 
         this._buttons.show();
-        this._footer.show();
     };
 
     Dialog.prototype.getButton = function (id) {

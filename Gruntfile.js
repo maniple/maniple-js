@@ -36,6 +36,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.registerTask('lint', ['jshint'] );
 
+    grunt.loadNpmTasks('grunt-contrib-coffee');
+
     // Default task(s).
     grunt.registerTask('default', ['jshint', 'uglify']);
 
