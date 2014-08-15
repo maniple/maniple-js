@@ -1,8 +1,18 @@
 module.exports = function(grunt) {
 
-    var DISTDIR = 'dist';
+    var findup = require('findup-sync');
+
+    var distdirPath = findup('maniple-js.distdir');
 
     var files = {};
+
+    var DISTDIR;
+
+    if (distdirPath) {
+        DISTDIR = grunt.file.read(distdirPath).trim();
+    } else {
+        DISTDIR ='dist/maniple';
+    }
 
     grunt.file.recurse('src', function (abspath, rootdir, subdir, filename) {
         if (filename.match(/\.js$/)) {
